@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: galaxyhubkr/sc-mediawiki-docker:master-latest,galaxyhubkr/sc-mediawiki-docker:master-${{ steps.setcalver.outputs.package_version }}
+          tags: galaxyhubkr/sc-mediawiki-docker:latest,galaxyhubkr/sc-mediawiki-docker:master-${{ steps.setcalver.outputs.package_version }}
