@@ -1,0 +1,267 @@
+#  _____ _               _____ _ _   _                 _____           _     
+# /  ___| |             /  __ (_) | (_)               |_   _|         | |    
+# \ `--.| |_ __ _ _ __  | /  \/_| |_ _ _______ _ __     | | ___   ___ | |___ 
+#  `--. \ __/ _` | '__| | |   | | __| |_  / _ \ '_ \    | |/ _ \ / _ \| / __|
+# /\__/ / || (_| | |    | \__/\ | |_| |/ /  __/ | | |   | | (_) | (_) | \__ \
+# \____/ \__\__,_|_|     \____/_|\__|_/___\___|_| |_|   \_/\___/ \___/|_|___/
+#                                                                           
+# Are you a human? Maybe you want to help with the wiki? Contact us on Discord: https://discord.com/invite/XcKwqyD4sc
+#
+# robots.txt for Star Citizen Wiki
+# based on version from Wikipedia in 2018-04-22
+
+# Observed spamming large amounts of https://en.wikipedia.org/?curid=NNNNNN
+# and ignoring 429 ratelimit responses, claims to respect robots:
+# http://mj12bot.com/
+User-agent: MJ12bot
+Disallow: /
+
+# advertising-related bots:
+User-agent: Mediapartners-Google*
+Disallow: /
+
+# Wikipedia work bots:
+User-agent: IsraBot
+Disallow:
+
+User-agent: Orthogaffe
+Disallow:
+
+# Crawlers that are kind enough to obey, but which we'd rather not have
+# unless they're feeding search engines.
+User-agent: UbiCrawler
+Disallow: /
+
+User-agent: DOC
+Disallow: /
+
+User-agent: Zao
+Disallow: /
+
+# Some bots are known to be trouble, particularly those designed to copy
+# entire sites. Please obey robots.txt.
+User-agent: sitecheck.internetseer.com
+Disallow: /
+
+User-agent: Zealbot
+Disallow: /
+
+User-agent: MSIECrawler
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: Fetch
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: linko
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Microsoft.URL.Control
+Disallow: /
+
+User-agent: Xenu
+Disallow: /
+
+User-agent: larbin
+Disallow: /
+
+User-agent: libwww
+Disallow: /
+
+User-agent: ZyBORG
+Disallow: /
+
+User-agent: Download Ninja
+Disallow: /
+
+# Misbehaving: requests much too fast:
+User-agent: fast
+Disallow: /
+
+#
+# Sorry, wget in its recursive mode is a frequent problem.
+# Please read the man page and use it properly; there is a
+# --wait option you can use to set the delay between hits,
+# for instance.
+#
+User-agent: wget
+Disallow: /
+
+#
+# The 'grub' distributed client has been *very* poorly behaved.
+#
+User-agent: grub-client
+Disallow: /
+
+#
+# Doesn't follow robots.txt anyway, but...
+#
+User-agent: k2spider
+Disallow: /
+
+#
+# Hits many times per second, not acceptable
+# http://www.nameprotect.com/botinfo.html
+User-agent: NPBot
+Disallow: /
+
+# A capture bot, downloads gazillions of pages with no public benefit
+# http://www.webreaper.net/
+User-agent: WebReaper
+Disallow: /
+
+# Crawler list from runescape.wiki
+# SEO bot
+User-agent: AhrefsBot
+Disallow: /
+
+# SEO bot
+User-agent: DotBot
+Disallow: /
+
+# Unknown
+User-agent: Mauibot
+Disallow: /
+
+# Huawei's web crawler. Ignores Disallow and gets caught in loops accessing special pages. Produces the majority of uncachable requests.
+User-agent: PetalBot
+Disallow: /
+
+# SEO bot
+User-agent: SemrushBot
+Disallow: /
+
+# SEO bot
+User-agent: DataForSeoBot
+Disallow: /
+
+# SEO bot
+User-agent: Neevabot
+Disallow: /
+
+# SEO bot
+User-agent: MegaIndex
+Disallow: /
+
+# SEO bot
+User-agent: Seekport
+Disallow: /
+
+# SEO bot
+User-agent: Barkrowler
+Disallow: /
+
+# Added rules from SCW
+User-agent: *
+Allow: /rest.php/wikiseo/v1/socialmediaimage/
+Disallow: /api.php
+Disallow: /rest.php
+Disallow: /ProjMGMT:
+Disallow: /Mediawiki:
+Disallow: /Mediawiki%3A
+Disallow: /mediawiki:
+Disallow: /*?title=Mediawiki:
+Disallow: /*?title=Mediawiki%3A
+Disallow: /*?*&title=Mediawiki:
+Disallow: /*?*&title=Mediawiki%3A
+Disallow: /Property:
+Disallow: /Property%3A
+Disallow: /property:
+Disallow: /*?title=Property:
+Disallow: /*?title=Property%3A
+Disallow: /*?*&title=Property:
+Disallow: /*?*&title=Property%3A
+Disallow: /Special:
+Disallow: /Special%3A
+Disallow: /special:
+Disallow: /*?title=Special:
+Disallow: /*?title=Special%3A
+Disallow: /*?*&title=Special:
+Disallow: /*?*&title=Special%3A
+Disallow: /Talk:
+Disallow: /Talk%3A
+Disallow: /talk:
+Disallow: /*?title=Talk:
+Disallow: /*?title=Talk%3A
+Disallow: /*?*&title=Talk:
+Disallow: /*?*&title=Talk%3A
+Disallow: /*_talk:
+Disallow: /*_talk%3A
+Disallow: /*?title=*_talk:
+Disallow: /*?title=*_talk%3A
+Disallow: /*?*&title=*_talk:
+Disallow: /*?*&title=*_talk%3A
+Disallow: /Template:
+Disallow: /Template%3A
+Disallow: /template:
+Disallow: /*?title=Template:
+Disallow: /*?title=Template%3A
+Disallow: /*?*&title=Template:
+Disallow: /*?*&title=Template%3A
+Disallow: /User:
+Disallow: /User%3A
+Disallow: /User:
+Disallow: /*?title=User:
+Disallow: /*?title=User%3A
+Disallow: /*?*&title=User:
+Disallow: /*?*&title=User%3A
+Disallow: /*?action=
+Disallow: /*?*&action=
+Disallow: /*?feed=
+Disallow: /*?*&feed=
+Disallow: /*?from=
+Disallow: /*?*&from=
+Disallow: /*?oldid=
+Disallow: /*?*&oldid=
+Disallow: /*?printable=
+Disallow: /*?*&printable=
+Disallow: /*?redirect=
+Disallow: /*?*&redirect=
+Disallow: /*?uselang=
+Disallow: /*?*&uselang=
+Disallow: /*?useskin=
+Disallow: /*?*&useskin=
+Disallow: /*?veaction=
+Disallow: /*?*&veaction=
+Disallow: /*?filefrom=
+Disallow: /*?*&filefrom=
+Disallow: /*?fileuntil=
+Disallow: /*?*&fileuntil=
+Disallow: /*?navbox=
+Disallow: /*?*&navbox=
+Disallow: /*?pageuntil=
+Disallow: /*?*&pageuntil=
+Disallow: /*?pagefrom=
+Disallow: /*?*&pagefrom=
+Disallow: /*?diff=
+Disallow: /*?*&diff=
+Disallow: /*?curid=
+Disallow: /*?*&curid=
+Disallow: /*?search=
+Disallow: /*?*&search=
+Disallow: /*?section=
+Disallow: /*?*&section=
+crawl-delay: 5
