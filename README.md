@@ -1,0 +1,1 @@
+# sc-mediawiki-docker
