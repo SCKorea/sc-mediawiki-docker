@@ -133,9 +133,6 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY composer.local.json /var/www/mediawiki
 
-RUN groupadd -g 33 www-data && \
-    useradd -u 33 -g www-data -d /var/www -s /usr/sbin/nologin www-data
-
 RUN set -eux; \
    chown -R www-data:www-data /var/www; \
    	\
