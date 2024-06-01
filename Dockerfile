@@ -136,7 +136,6 @@ COPY composer.local.json /var/www/mediawiki
 RUN groupadd -g 1000 www-data && \
     useradd -u 1000 -g www-data -d /var/www -s /usr/sbin/nologin www-data
 
-
 RUN set -eux; \
    chown -R www-data:www-data /var/www; \
    	\
