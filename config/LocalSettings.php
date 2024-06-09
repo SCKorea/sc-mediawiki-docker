@@ -23,7 +23,7 @@ $wgSitename = "Star Citizen Wiki";
 $wgServer = "https://scwiki.kr";
 $wgMetaNamespace = "Star_Citizen_Wiki";
 # Force HTTPS
-$wgForceHTTPS = true;
+$wgForceHTTPS = false;
 # Main page is served as the domain root
 $wgMainPageIsDomainRoot = true;
 # Allow MediaWiki:Citizen.css to load on all pages
