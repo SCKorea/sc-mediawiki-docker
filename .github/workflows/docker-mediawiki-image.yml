@@ -1,9 +1,9 @@
-name: SC Korea Mediawiki Image Build
+name: SMW Mediawiki Image Build
 
 on:
   push:
     branches:
-      - 'master'
+      - 'smw'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
         uses: Nelyx/action-calver@v1.0.0
         id: setcalver
         with:
-          default_branch: 'refs/heads/master'
+          default_branch: 'refs/heads/smw'
           format: 'YY.MM.DD'
       -
         name: Login to Docker Hub
@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: galaxyhubkr/sc-mediawiki-docker:latest,galaxyhubkr/sc-mediawiki-docker:master-${{ steps.setcalver.outputs.package_version }}
+          tags: galaxyhubkr/sc-mediawiki:latest,galaxyhubkr/sc-mediawiki:master-${{ steps.setcalver.outputs.package_version }}

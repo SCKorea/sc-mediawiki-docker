@@ -1,9 +1,8 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 # Version
 ENV MEDIAWIKI_MAJOR_VERSION 1.39
 ENV MEDIAWIKI_VERSION 1.39.7
-ENV PYGMENTS_VERSION 2.17.2
 
 # System dependencies
 RUN set -eux; \
@@ -24,6 +23,7 @@ RUN set -eux; \
         	s3cmd \
 	 	python3 \
    		python3-pip \
+		#mariadb-client \
 	; \
 	rm -rf /var/lib/apt/lists/*
  
@@ -114,7 +114,7 @@ RUN set -eux; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps; \
     rm -rf /var/lib/apt/lists/*
     
-COPY ./config/LocalSettings.php /var/www/mediawiki/LocalSettings.php
+COPY ./config/LocalSettings.php /var/www/mediawiki/LocalSettings-Sample.php
 COPY ./resources /var/www/mediawiki/resources
 
 COPY ./config/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
@@ -131,11 +131,16 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+USER root
+RUN chmod +x /usr/local/bin/entrypoint.sh; \
+    chown www-data:www-data /usr/local/bin/entrypoint.sh
+
 COPY composer.local.json /var/www/mediawiki
 
 RUN set -eux; \
    chown -R www-data:www-data /var/www; \
-   chmod -R 755 /var/www \
    	\
 	 mkdir /usr/local/smw; \
 	 chown www-data:www-data /usr/local/smw
@@ -175,4 +180,5 @@ RUN set -eux; \
 
 COPY ./config/swiftmailer-extension.json /var/www/mediawiki/extensions/SwiftMailer/extension.json
 
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["php-fpm"]

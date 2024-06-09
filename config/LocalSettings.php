@@ -1,10 +1,10 @@
 <?php
 /**
  * Star Citizen Wiki 
- * https://scwiki.kr
+ * https://starcitizen.tools
  *
  * MediaWiki settings file
- */ß
+ */
 
 # Protect against web entry
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -12,15 +12,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /* DEBUG ONLY */
-#$wgShowExceptionDetails = true;
+$wgShowExceptionDetails = true;
 #$wgDebugDumpSql = true;
-#$wgDebugComments = true;
+$wgDebugComments = true;
 #Maintenance
 #$wgReadOnly = 'Maintenance is underway. Website is on read-only mode';
 
 # General Settings
-$wgSitename = $_ENV['MEDIAWIKI_NAME'];
-$wgServer = $_ENV['MEDIAWIKI_URL'];
+$wgSitename = "Star Citizen Wiki";
+$wgServer = "https://scwiki.kr";
 $wgMetaNamespace = "Star_Citizen_Wiki";
 # Force HTTPS
 $wgForceHTTPS = true;
@@ -32,7 +32,7 @@ $wgAllowSiteCSSOnRestrictedPages = true;
 $wgFragmentMode = [ 'html5' ];
 # Use Parsoid media HTML structure
 $wgParserEnableLegacyMediaDOM = false;
-$wgLocaltimezone = $_ENV['MEDIAWIKI_TIMEZONE'];
+$wgLocaltimezone = "UTC";
 $wgMaxShellMemory = 0;
 
 $wgSecretKey = "{$_ENV['MEDIAWIKI_SECRETKEY']}";
@@ -41,12 +41,14 @@ $wgUpgradeKey = "{$_ENV['MEDIAWIKI_UPGRADEKEY']}";
 $wgMiserMode = true;
 
 # Database settings
-$wgDBtype = $_ENV['DB_TYPE'];
-$wgDBserver = $_ENV['DB_HOST'];
-$wgDBname = $_ENV['DB_NAME'];
-$wgDBuser = $_ENV['DB_USERNAME'];
+$wgDBtype = "mysql";
+$wgDBserver = "{$_ENV['DB_HOST']}";
+$wgDBname =  "{$_ENV['DB_NAME']}";
+$wgDBuser ="{$_ENV['DB_USER']}";
 $wgDBpassword = "{$_ENV['DB_PASSWORD']}";
-$wgDBprefix = $_ENV['DB_PREFIX'];
+
+# MySQL specific settings
+$wgDBprefix = "{$_ENV['DB_PREFIX']}";
 
 # See T343492
 # TODO: Remove after updating to MW 1.43
@@ -114,20 +116,20 @@ $wgFavicon = '/favicon.svg';
 $wgEnableEmail = true;
 $wgEnableUserEmail = true; # UPO
 
-$wgEmergencyContact = $_ENV['MAIL_EMERGENCY_CONTACT'];
-$wgPasswordSender = $_ENV['MAIL_PASSWORD_SENDER'];
+$wgEmergencyContact = "{$_ENV['MAIL_EMERGENCY']}";
+$wgPasswordSender = "{$_ENV['MAIL_SENDER']}";
 
 $wgEnotifUserTalk = false; # UPO
 $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 
 $wgSMTP = [
-  'host' => $_ENV['SMTP_HOST'],
-  'IDHost' => $_ENV['SMTP_HOST'],
+  'host' => "{$_ENV['SMTP_HOST']}",
+  'IDHost' => "{$_ENV['SMTP_IDHOST']}",
   'port' => $_ENV['SMTP_PORT'],
   'auth' => true,
-  'username' => $_ENV['SMTP_USERNAME'],
-  'password' => $_ENV['SMTP_PASSWORD']
+  'username' => "{$_ENV['SMTP_USERNAME']}",
+  'password' => "{$_ENV['DB_HOSTSMTP_PASSWORD']}"
 ];
 
 ## Allow logged-in users to set a preference whether or not matches 
@@ -165,6 +167,7 @@ $wgUseCdn = true;
 # Align with parser cache
 $wgCdnMaxAge = 259200;
 $wgCdnServersNoPurge = [
+	'194.233.168.70', # Linode Loadbalancer
 	'10.0.0.0/8',
 	'173.245.48.0/20',
 	'103.21.244.0/22',
@@ -252,7 +255,7 @@ wfLoadExtension( 'Cldr' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'CodeMirror' );
 wfLoadExtension( 'CommonsMetadata' );
-wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/QuestyCaptcha' ]);
+wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/hCaptcha' ]);
 wfLoadExtension( 'CookieWarning' );
 wfLoadExtension( 'Disambiguator' );
 wfLoadExtension( 'Discord' );
@@ -312,13 +315,13 @@ wfLoadExtension( 'WebAuthn' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 
-enableSemantics( 'starcitizen.tools' );
+enableSemantics( 'scwiki.kr' );
 #=============================================== Extension Config ===============================================
 # Apiunto 
 $wgApiuntoKey = ''; 
-$wgApiuntoUrl = $_ENV['APIUNTO_URL'];
-$wgApiuntoTimeout = $_ENV['APIUNTO_TIMEOUT']; // 5 seconds
-$wgApiuntoDefaultLocale = $_ENV['APIUNTO_LOCAL'];
+$wgApiuntoUrl = 'https://api.star-citizen.wiki';
+$wgApiuntoTimeout = '30'; // 5 seconds
+$wgApiuntoDefaultLocale = 'en_EN'; 
 
 # AWS
 $wgAWSCredentials = [
@@ -326,19 +329,19 @@ $wgAWSCredentials = [
   'secret' => $_ENV['IMAGES_SECRET_KEY'],
   'token' => false
 ];
-$wgAWSBucketName = $_ENV['BUCKET_NAME'];
-$wgAWSBucketDomain = $_ENV['BUCKET_DOMAIN'];
+$wgAWSBucketName = 'media.scwiki.kr';
+$wgAWSBucketDomain = 'media.scwiki.kr';
 $wgAWSRepoHashLevels = '2';
 $wgAWSRepoDeletedHashLevels = '3';
-$wgFileBackends['s3']['endpoint'] = $_ENV['BUCKET_ENDPOINT'];
-$wgAWSRegion = $_ENV['BUCKET_REGION'];
+$wgFileBackends['s3']['endpoint'] = 'https://jp-osa-1.linodeobjects.com';
+$wgAWSRegion = 'jp-osa-1';
 
 # CirrusSearch
-$wgCirrusSearchIndexBaseName = 'wiki';
+$wgCirrusSearchIndexBaseName = 'sc';
 $wgSearchType = 'CirrusSearch';
 $wgCirrusSearchUseCompletionSuggester = 'yes';
 $wgCirrusSearchClusters = [
-    'default' => [$_ENV['CIRRUS_CLUSTER']],
+    'default' => ['elasticsearch'],
 ];
 $wgCirrusSearchCompletionSuggesterSubphrases = [
     'build'  => true,
@@ -359,8 +362,8 @@ $wgDefaultUserOptions['usebetatoolbar'] = 1; // user option provided by WikiEdit
 $wgCookieWarningEnabled = true;
 
 # ConfirmEdit
-#$wgHCaptchaSiteKey = "{$_ENV['HCAPTCHA_SITEKEY']}";
-#$wgHCaptchaSecretKey = "{$_ENV['HCAPTCHA_SECRETKEY']}";
+$wgHCaptchaSiteKey = "{$_ENV['HCAPTCHA_SITEKEY']}";
+$wgHCaptchaSecretKey = "{$_ENV['HCAPTCHA_SECRETKEY']}";
 $wgCaptchaTriggers['edit'] = true;
 $wgCaptchaTriggers['create'] = true;
 
@@ -390,7 +393,7 @@ $wgMultiPurgeServiceOrder = array ( 'Cloudflare' );
 $wgMultiPurgeCloudFlareZoneId = "{$_ENV['CLOUDFLARE_ZONEID']}";
 $wgMultiPurgeCloudFlareApiToken = "{$_ENV['CLOUDFLARE_APITOKEN']}";
 $wgMultiPurgeStaticPurges = [
-  'Load Script' => 'load.php?lang=en&modules=startup&only=scripts&raw=1&skin=citizen'
+  'Load Script' => 'load.php?lang=de&modules=startup&only=scripts&raw=1&skin=citizen'
 ];
 $wgMultiPurgeRunInQueue = true;
 
@@ -410,9 +413,9 @@ $wgParsoidSettings = [
 $wgVisualEditorParsoidAutoConfig = false;
 $wgVirtualRestConfig['modules']['parsoid'] = [
 	// URL to the Parsoid instance - use port 8142 if you use the Debian package - the parameter 'URL' was first used but is now deprecated (string)
-	'url' => $_ENV['VIRTUAL_REST_URL'],
+	'url' => 'https://scwiki.kr/rest.php',
 	// Parsoid "domain" (string, optional) - MediaWiki >= 1.26
-	'domain' => $_ENV['VIRTUAL_REST_DOMAIN'],
+	'domain' => 'scwiki.kr',
   'restbaseCompat' => false,
   'timeout' => 30,
 ];
@@ -467,6 +470,9 @@ $smwgConfigFileDir = "/usr/local/smw";
 $smwgNamespacesWithSemanticLinks[NS_TEMPLATE] = true;
 # Module namespace
 $smwgNamespacesWithSemanticLinks[828] = true;
+# Disable entity issue panel for all users by default since it is useless to most users
+# This generates an uncached call to api.php which is not needed
+$wgDefaultUserOptions['smw-prefs-general-options-show-entity-issue-panel'] = false;
 
 # Semantic Extra Special Properties
 $sespgUseFixedTables = true;
@@ -534,19 +540,19 @@ $wgPygmentizePath = '/usr/local/bin/pygmentize';
 # TemplateStyles
 $wgTemplateStylesAllowedUrls = [
   "audio" => [
-      $_ENV['TEMPLATE_ALLOWED_AUDIO_1'],
-      $_ENV['TEMPLATE_ALLOWED_AUDIO_2']
+    "<^https://scwiki\\.kr/>",
+    "<^https://media\\.scwiki\\.kr/>"
   ],
   "image" => [
-      $_ENV['TEMPLATE_ALLOWED_IMAGE_1'],
-      $_ENV['TEMPLATE_ALLOWED_IMAGE_2']
+    "<^https://scwiki\\.kr/>",
+    "<^https://media\\.scwiki\\.kr/>"
   ],
   "svg" => [
-      $_ENV['TEMPLATE_ALLOWED_SVG_1'],
-      $_ENV['TEMPLATE_ALLOWED_SVG_2']
+    "<^https://scwiki\\.kr/[^?#]*\\.svg(?:[?#]|$)>",
+    "<^https://media\\.scwiki\\.kr/[^?#]*\\.svg(?:[?#]|$)>"
   ],
   "font" => [
-      $_ENV['TEMPLATE_ALLOWED_FONT_1'],
+    "<^https://scwiki\\.kr/>"
   ],
   "namespace" => [
       "<.>"
@@ -697,7 +703,7 @@ $wgWikiEditorRealtimePreview = true;
 
 # WikiSEO
 $wgTwitterSiteHandle = 'ToolsWiki';
-$wgWikiSeoDefaultLanguange = $_ENV['SEO_DEFAULT_LANGUANGE'];
+$wgWikiSeoDefaultLanguange = 'en-us';
 $wgWikiSeoEnableSocialImages = true;
 #Disable wgLogo as fallback image
 $wgWikiSeoDisableLogoFallbackImage = true;
@@ -726,7 +732,7 @@ $wgCitizenThemeDefault = 'dark';
 /** @see RedisBagOStuff for a full explanation of these options. **/
 $wgObjectCaches['redis'] = array(
     'class'                => 'RedisBagOStuff',
-    'servers'              => array( $_ENV['REDIS_SERVER'] ),
+    'servers'              => array( 'redis' ),
     // 'connectTimeout'    => 1,
     // 'persistent'        => false,
     // 'password'          => 'secret',
@@ -735,7 +741,7 @@ $wgObjectCaches['redis'] = array(
 $wgJobTypeConf['default'] = [
 	'class' => 'JobQueueRedis',
 	'order' => 'fifo',
-	'redisServer' => $_ENV['REDIS_SERVER'],
+	'redisServer' => 'redis',
 	'checkDelay' => true,
 	'daemonized' => true
 ];
@@ -1007,29 +1013,45 @@ $wgHooks['SkinAddFooterLinks'][] = function ( $sk, $key, &$footerlinks ) {
 			],
 			$sk->msg( 'cookiestatement' )->text()
 		);
-        $footerlinks['galaxyhub'] = Html::element(
-            'a',
-            [
-                'href' => 'https://galaxyhub.kr',
-                'rel' => $rel
-            ],
-            $sk->msg( 'footer-galaxyhub' )->text()
-        );
-		$footerlinks['localization'] = Html::element(
+		#$footerlinks['analytics'] = Html::element(
+		#	'a',
+		#	[
+		#		'href' => 'https://analytics.starcitizen.tools/starcitizen.tools',
+		#		'rel' => $rel
+		#	],
+		#	$sk->msg( 'footer-analytics' )->text()
+		#);
+		$footerlinks['statuspage'] = Html::element(
 			'a',
 			[
-				'href' => 'https://sc.galaxyhub.kr',
+				'href' => 'https://status.starcitizen.tools',
 				'rel' => $rel
 			],
-			$sk->msg( 'footer-localization' )->text()
+			$sk->msg( 'footer-statuspage' )->text()
 		);
 		$footerlinks['github'] = Html::element(
 			'a',
 			[
-				'href' => $_ENV['GITHUB_HREF'],
+				'href' => 'https://github.com/StarCitizenTools',
 				'rel' => $rel
 			],
 			$sk->msg( 'footer-github' )->text()
+		);
+		$footerlinks['patreon'] = Html::element(
+			'a',
+			[
+				'href' => 'https://www.patreon.com/starcitizentools',
+				'rel' => $rel
+			],
+			$sk->msg( 'footer-patreon' )->text()
+		);
+		$footerlinks['kofi'] = Html::element(
+			'a',
+			[
+				'href' => 'https://ko-fi.com/starcitizentools',
+				'rel' => $rel
+			],
+			$sk->msg( 'footer-kofi' )->text()
 		);
 	}
 };

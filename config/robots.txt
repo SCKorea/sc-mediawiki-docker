@@ -9,6 +9,12 @@
 #
 # robots.txt for Star Citizen Wiki
 # based on version from Wikipedia in 2018-04-22
+#
+# Please note: There are a lot of pages on this site, and there are
+# some misbehaved spiders out there that go _way_ too fast. If you're
+# irresponsible, your access to the site may be blocked.
+#
+Sitemap: https://sitemap.starcitizen.tools/sitemap-index-starcitizentools.xml
 
 # Observed spamming large amounts of https://en.wikipedia.org/?curid=NNNNNN
 # and ignoring 429 ratelimit responses, claims to respect robots:
