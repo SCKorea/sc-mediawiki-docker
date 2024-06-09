@@ -23,7 +23,7 @@ RUN set -eux; \
         	s3cmd \
 	 	python3 \
    		python3-pip \
-		#mariadb-client \
+		mariadb-client \
 	; \
 	rm -rf /var/lib/apt/lists/*
  
