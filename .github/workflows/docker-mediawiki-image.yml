@@ -3,7 +3,7 @@ name: SMW Mediawiki Image Build
 on:
   push:
     branches:
-      - 'smw'
+      - 'master'
   workflow_dispatch:
 
 jobs:
