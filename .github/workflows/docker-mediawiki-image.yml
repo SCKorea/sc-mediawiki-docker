@@ -1,4 +1,4 @@
-name: SMW Mediawiki Image Build
+name: Mediawiki Image Build
 
 on:
   push:
