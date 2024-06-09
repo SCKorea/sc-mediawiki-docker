@@ -1,4 +1,4 @@
-# Star Citizen Tools Docker
+# SC Wiki KR Docker
 The Docker configuration powering https://scwiki.kr
 
 Docker Hub: https://hub.docker.com/r/galaxyhub/sc-mediawiki
