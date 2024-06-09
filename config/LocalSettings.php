@@ -129,7 +129,7 @@ $wgSMTP = [
   'port' => $_ENV['SMTP_PORT'],
   'auth' => true,
   'username' => "{$_ENV['SMTP_USERNAME']}",
-  'password' => "{$_ENV['DB_HOSTSMTP_PASSWORD']}"
+  'password' => "{$_ENV['SMTP_PASSWORD']}"
 ];
 
 ## Allow logged-in users to set a preference whether or not matches 
