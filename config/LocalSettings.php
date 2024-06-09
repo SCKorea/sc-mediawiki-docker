@@ -12,9 +12,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /* DEBUG ONLY */
-$wgShowExceptionDetails = true;
+#$wgShowExceptionDetails = true;
 #$wgDebugDumpSql = true;
-$wgDebugComments = true;
+#$wgDebugComments = true;
 #Maintenance
 #$wgReadOnly = 'Maintenance is underway. Website is on read-only mode';
 
@@ -32,7 +32,7 @@ $wgAllowSiteCSSOnRestrictedPages = true;
 $wgFragmentMode = [ 'html5' ];
 # Use Parsoid media HTML structure
 $wgParserEnableLegacyMediaDOM = false;
-$wgLocaltimezone = "UTC";
+$wgLocaltimezone = "Asia/Seoul";
 $wgMaxShellMemory = 0;
 
 $wgSecretKey = "{$_ENV['MEDIAWIKI_SECRETKEY']}";
