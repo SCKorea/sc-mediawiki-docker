@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "DB_HOST: $DB_HOST"
-echo "DB_NAME: $DB_NAME"
-echo "DB_USER: $DB_USER"
-echo "DB_PASSWORD: $DB_PASSWORD"
-
 # Wait for the database to be ready
 while ! mysqladmin ping -h"$DB_HOST" --silent; do
     echo "Waiting for database connection..."
