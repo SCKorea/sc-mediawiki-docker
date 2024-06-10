@@ -49,7 +49,7 @@ else
         --dbprefix "$DB_PREFIX" \
         --installdbuser "$DB_USER" \
         --installdbpass "$DB_PASSWORD" \
-        --scriptpath "" \
+        --scriptpath "/" \
         --server "https://scwiki.kr" \
         --lang en \
         --pass admin_password \
