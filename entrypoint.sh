@@ -51,7 +51,7 @@ else
         --installdbpass "$DB_PASSWORD" \
         --scriptpath "" \
         --server "https://scwiki.kr" \
-        --lang en \
+        --lang $MEDIAWIKI_LANG \
         --pass admin_password \
         "$DB_NAME" "$DB_PASSWORD"
 
